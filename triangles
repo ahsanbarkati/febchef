@@ -1,0 +1,33 @@
+#include <stdio.h>
+ 
+ 
+int tri(int a,int b,int c){
+    if(a+b>c&&b+c>a&&c+a>b)return 1;
+    else return 0;
+}
+ 
+int main(void) {
+	int i,t,n,arr[1000000],j,k,c=0,ans=0;
+	long long l,r;
+	scanf("%d%d%d",&t,&l,&r);
+	//printf("%d%d%d",t,l,r);
+	
+	for(i=0;i<t;i++){
+	    scanf("%d",&arr[i]);
+	    }
+	   //printf("%d",i);
+	
+	for(l;l<=r;l++){
+	    c=0;
+	    for(j=0;j<i;j++)
+	        for(k=j+1;k<i;k++){
+	            if(tri(l,arr[j],arr[k])==1)c=1;
+	            
+	        }
+	        ans+=c;
+	        
+	    }
+	    
+	   printf("%d",ans);
+	return 0;
+}
