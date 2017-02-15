@@ -24,10 +24,10 @@ int main()
             scanf("%d",&k);
             for(i=l;i<=r;i++)
             {
-                if(frequency(arr,l,r,arr[i])>k)
-                    printf("%d",arr[i]);
-                break;
+                if(frequency(arr,l,r,arr[i])>k){
+                    printf("%d",arr[i]);break;}
+                }
+               
             }
-        }
-return 0;
-}
+        
+return 0;}
