@@ -1,0 +1,37 @@
+#include<stdio.h>
+
+
+int summation(int arr [],int l,int r)
+{
+    int i,sum=0;
+    for(i=l;i<r;i++)
+    sum+=arr[i];
+    return sum;
+}
+
+int index1(int arr[],int n , int l,int r)
+{
+    int i,j;int max=0;
+    int sum=0;
+    for(i=l;i<=r-n+1;i++)
+    {
+        sum = summation(arr,i,i+n);
+        if(sum>max)
+        max=sum;
+    }
+    // now max has maximum sum 
+    for(i=l;i<=r-n+1;i++)
+    {
+        sum=summation(arr,i,i+n);
+        if(sum==max)
+        return i;
+    }
+}
+
+int main()
+{
+    int arr[]={1,2,3,4,5,6,7};
+    int c=index1(arr,3,0,4);
+    printf("%d",c);
+    return 0 ;
+}
