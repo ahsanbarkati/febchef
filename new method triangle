@@ -1,26 +1,26 @@
-new method for triangle
-
     #include<stdio.h>
     #include<math.h>
+    #include<stdlib.h>
     int comp(const void* a, const void* b)
     {  return *(int*)a > *(int*)b ; }
      
     int main()
     {   
-        	int i,t,n,arr[1000000],j,k,c=0,ans=0,p;
+        	int t,n,arr[1000000],j,k,c=0,a=0,p,i;
     	int l,r;
     	scanf("%d%d%d",&t,&l,&r);
     	
     	for(i=0;i<t;i++){
     	    scanf("%d",&arr[i]);
     	    }
-    	   qsort(arr,i,sizeof(arr[0]),comp);
+    	   qsort(arr,t,sizeof(arr[0]),comp);
     	   
     	    for(l;l<r+1;l++){
-    	        for(p=0;p<i;p++){
-    	            for(j=p+1;j<i&&l+arr[p]>arr[j];j++){c++;break;}
+    	        a=0;
+    	        for(p=0;p<t;p++){
+    	            for(j=p+1;j<t&&l+arr[p]>arr[j]&&l<arr[p]+arr[j];j++){c++;a=1;break;}
     	           // printf("at l=%d p=%d j=%d c %d\n",l,p,j,j-p-1);
-    	            break;
+    	            if(a)break;
     	        }
     	    }
     	    printf("%d",c);
