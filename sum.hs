@@ -7,6 +7,14 @@ sm a x y c=do
     let check6 =0
     let check7 =0
     let check8 =0
+    if (a!!x!!y/=2)
+    	then do
+    		 print "INVALID COORDINATES!! enter unfilled coordinates"
+    		 y<-getLine
+    		 x<-getLine
+    		 sm a (read x::Int) (read y::Int) c
+    else return()
+
     let row=a!!y
     let p1=take x row
     let p2= drop (x+1) row
@@ -27,7 +35,12 @@ sm a x y c=do
     check7 <- if (f!!0!!0==f!!1!!1)&&(f!!1!!1==f!!2!!2)&&(f!!2!!2/=2) then return (1) else return (0)
     check8 <- if (f!!0!!2==f!!1!!1)&&(f!!1!!1==f!!2!!0)&&(f!!2!!0/=2) then return (1) else return (0)
     let check = check1+check2+check3+check4+check5+check6+check7+check8
-    if (check/=0) then print "Game Over"   else return()
+    if (check/=0)
+    	then do
+             print "Game Over"
+             print (c `mod` 2) 
+             print "Wins"
+    else return()
     print "Please enter x and y coordinates for next turn "
     y<-getLine
     x<-getLine
