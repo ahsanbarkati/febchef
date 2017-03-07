@@ -1,0 +1,59 @@
+#include<stdio.h>
+int min2(int a,int b){
+    return a<b?a:b;
+}
+int min4(int a,int b,int c,int d){
+    return min2(a,b)<min2(c,d)?min2(a,b):min2(c,d);
+}
+
+
+void prgm()
+{
+       int t;
+    int n,a[100000]={0},b[100000]={0},c[100000]={0};
+    int dp[10000][10000];
+    int i,j;
+    
+        for(i=0;i<10000;i++)
+        for(j=0;j<10000;j++)
+        dp[i][j]=0;
+         int sum=0;
+        scanf("%d",&n);
+        
+    for(i=0;i<n-1;i++)scanf("%d",&a[i]);
+    for(i=0;i<n-2;i++)scanf("%d",&b[i]);
+    for(i=0;i<n-3;i++)scanf("%d",&c[i]);
+
+
+// bse case
+for(i=0;i<n;i++)
+{j=i+4;
+dp[i][i+1]=a[i];
+dp[i][i+2]=min2(a[i]+a[i+1],b[i]);
+dp[i][i+3]=min4(a[i]+a[i+1]+a[i+2],a[i]+b[i+1],b[i]+a[i+2],c[i]);
+    for(j;j<n;j++)
+    {
+        dp[i][j]=min4(dp[i][j-3]+c[j-3],dp[i][j-2]+b[j-2],dp[i][j-1]+a[j-1],dp[i][j-3]+c[j-3]);
+    }
+}
+for(i=0;i<n;i++)
+for(j=i+1;j<n;j++){
+    //printf("from %d to %d is %d \n",i+1,j+1,dp[i][j]);
+    sum+=dp[i][j];
+        
+    } 
+printf("%d\n",sum);
+}
+int main(){
+    
+ 
+    int t;    
+    scanf("%d",&t);
+    for(;t--;){
+    prgm();
+       
+    
+    }
+       
+        return 0;
+}
