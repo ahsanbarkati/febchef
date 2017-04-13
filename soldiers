@@ -1,0 +1,46 @@
+#include<stdio.h>
+int noz(int a[],int i){
+    
+    i--;
+    int c=0;
+    for(;a[i]!=1&&i>=0;i--)
+        c++;
+        //printf("noz here i %d %d\n",i,c);
+        return c;
+}
+int main(){
+    int n,i,j,k,sum;
+
+    scanf("%d",&n);
+    getchar();
+    while(n--){
+        k=0,sum=0;
+        long tim=0;
+        int *a;
+        //getchar();
+        int ch=getchar();
+        while(ch!=EOF&&ch!='\n'){
+            a[k]=ch;
+            ch=getchar();
+            k++;
+        }
+        if(a[k-1]==0)a[k]=1;
+        //k++;
+        
+        for(i=0;i<k;i++)
+            a[i]=a[i]-'0';
+            if(a[k-1]==0)k++;
+        for(i=0;i<k;i++)sum+=a[i];
+   for(i=k-1;i>=0;i--){
+      //printf("i %d tim %d noz %d %d\n",i,tim,noz(a,i),sum);
+       if(a[i]==1||(i==k-1&&a[i]==0)){
+           sum=sum-a[i];
+           if(noz(a,i)!=0)
+           tim+=(sum)+noz(a,i)*sum;
+           //printf("%d\n",sum);
+                                    }
+   }
+    printf("%ld\n",tim);
+    }
+    return 0;
+}
