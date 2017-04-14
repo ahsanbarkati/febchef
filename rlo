@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int val;
+    struct node *next;
+};
+struct node* make(int v){
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->val=v;
+    return temp;
+}
+struct node* front(int v,struct node* head){
+    struct node* nd;
+    nd=make(v);
+    nd->next=head;
+    return nd;
+}
+void display(struct node *head)
+{
+struct node *cur = head;
+while(head){
+//display(head->next);
+printf("%d ",head->val);
+head=head->next;
+}
+}
+int main(){
+struct node *head = NULL;
+int val; 
+scanf("%d",&val);
+while (val != -1) {
+head=front(val, head);
+scanf ("%d", &val);
+}
+display(head);
+    
+}
