@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace :: std;
+long int f(int m,int n,int b)
+{
+    long int m1=m-1;
+        long int m2=m+1;
+        long int res=m*(n-m*b); 
+        long int res1=m1*(n-m1*b);
+        long int res2=m2*(n-m2*b); 
+    if(res>res1 && res>res2)return 0;
+    if(res1>res && res1>res2)return -1;
+    if(res2>res && res2>res1)return 1;
+}
+    
+int main ()
+{
+    long int t=1;cin>>t;
+    while(t--)
+    {
+        long int n,k,b;
+        cin>>n>>b;
+        if(b>n/2)
+        {
+            if(n-b>=0)
+                cout<<n-b<<endl;
+            else
+                cout<<0<<endl;
+        }
+        else{
+        long int m=1;
+        long int max=0;
+        long int hi=n/b;
+        long int lo=1;
+        m=lo+(hi-lo)/2;
+        while(hi>lo)
+        {   
+            m=lo+(hi-lo)/2;      
+            //cout<<m<<" for "<<n-m*b<<" ans "<<m*(n-m*b)<<endl;
+            if(max<m*(n-m*b))max=m*(n-m*b);
+            if(f(m,n,b)==0)break;
+            else if(f(m,n,b)<0)hi=m-1;
+            else
+                lo=m+1;
+        }
+        cout<<max<<endl;
+        }
+    }
+    return 0;
+}
