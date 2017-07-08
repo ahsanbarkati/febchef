@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace :: std;
-int f(int m,int n,int b)
+long int f(int m,int n,int b)
 {
-    int m1=m-1;
-    int m2=m+1;
-    int res=m*(n-m*b); 
-    int res1=m1*(n-m1*b);
-    int res2=m2*(n-m2*b); 
+    long int m1=m-1;
+        long int m2=m+1;
+        long int res=m*(n-m*b); 
+        long int res1=m1*(n-m1*b);
+        long int res2=m2*(n-m2*b); 
     if(res>res1 && res>res2)return 0;
     if(res1>res && res1>res2)return -1;
     if(res2>res && res2>res1)return 1;
@@ -14,10 +14,10 @@ int f(int m,int n,int b)
     
 int main ()
 {
-    int t=1;cin>>t;
+    long int t=1;cin>>t;
     while(t--)
     {
-        int n,k,b;
+        long int n,k,b;
         cin>>n>>b;
         if(b>n/2)
         {
@@ -27,10 +27,10 @@ int main ()
                 cout<<0<<endl;
         }
         else{
-        int m=1;
-        int max=0;
-        int hi=n/b;
-        int lo=1;
+        long int m=1;
+        long int max=0;
+        long int hi=n/b;
+        long int lo=1;
         m=lo+(hi-lo)/2;
         while(hi>lo)
         {   
